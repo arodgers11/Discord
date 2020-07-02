@@ -130,7 +130,7 @@ class Music(commands.Cog):
                         await ctx.send("You are not connected to a voice channel.")
                         raise commands.CommandError("Author not connected to a voice channel.")
         if len(s)==0:
-            await ctx.send('Hello {}!!'.format(ctx.author.name))
+            await ctx.send('Hello **{}**!!'.format(ctx.author.name))
 			
     @commands.command()
     async def boi(self,ctx):
