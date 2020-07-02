@@ -22,6 +22,6 @@ async def on_ready():
 client.load_extension('cogs.OWL_wiki')
 client.load_extension('cogs.Music')
         
-client.run('NzE4MDIyNzE3ODUyNDgzNjQ2.Xti0zw.owv5tLeBNNXsZkK3gZ1uXVjtqx0',
+client.run('NzE4MDIyNzE3ODUyNDgzNjQ2.Xv1Ykw.Qtkzhm2fj04s7ZA04GyQXYcF6zQ',
            bot=True,
            reconnect=True)
