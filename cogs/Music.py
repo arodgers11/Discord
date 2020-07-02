@@ -132,7 +132,7 @@ class Music(commands.Cog):
         if len(s)==0:
             await ctx.send('Hello **{}**!!'.format(ctx.author.name))
 			
-    @commands.command()
+    @commands.command(aliases=['yeahboi','yeah','yea'])
     async def boi(self,ctx):
         """YEAH BOIIIIIII"""
         yeah_boi='https://www.youtube.com/watch?v=5aopMm7UGYA'
