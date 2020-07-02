@@ -58,7 +58,7 @@ class Music(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print('Music Loadaed')
+        print('Music Loaded')
 
     @commands.command()
     async def play(self, ctx, url):
@@ -130,24 +130,24 @@ class Music(commands.Cog):
                         await ctx.send("You are not connected to a voice channel.")
                         raise commands.CommandError("Author not connected to a voice channel.")
         if len(s)==0:
-            await ctx.send('Hello {}!! ::'.format(ctx.author.name))
+            await ctx.send('Hello {}!!'.format(ctx.author.name))
 			
-	@commands.command()
-	async def boi(self,ctx):
-		"""YEAH BOIIIIIII"""
-		yeah_boi='https://www.youtube.com/watch?v=5aopMm7UGYA'
-		player = await YTDLSource.from_url(yeah_boi,loop=self.bot.loop,stream=False)
+    @commands.command()
+    async def boi(self,ctx):
+        """YEAH BOIIIIIII"""
+        yeah_boi='https://www.youtube.com/watch?v=5aopMm7UGYA'
+        player = await YTDLSource.from_url(yeah_boi,loop=self.bot.loop,stream=False)
         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
         time.sleep(30)
         await ctx.voice_client.disconnect()
-                    
+			
     @play.before_invoke
     @penis.before_invoke
     @dallas.before_invoke
     @bruh.before_invoke
     @pause.before_invoke
     @resume.before_invoke
-	@boi.before_invoke
+    @boi.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
