@@ -1,9 +1,8 @@
 import discord
 import os
 from discord.ext import commands
-from boto.s3.connection import S3Connection
-TOKEN=S3Connection(os.environ['BOT_TOKEN'])
-
+print(os.environ)
+TOKEN='asdf'
 allowed_channels=['stockfish-war-room','bots']
 
 client=commands.Bot(command_prefix='.')
