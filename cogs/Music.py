@@ -29,7 +29,7 @@ ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 players={}
 
 def play_file(ctx,file_path):
-        ctx.voice_client.play(discord.FFmpegPCMAudio(executable='C:/Users/ajr115/AppData/Local/FFmpeg/bin/ffmpeg.exe', source=file_path))
+        ctx.voice_client.play(discord.FFmpegPCMAudio(executable='./FFmpeg/bin/ffmpeg.exe', source=file_path))
     
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
