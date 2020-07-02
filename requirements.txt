@@ -4,4 +4,4 @@ numpy
 math
 matplotlib
 bs4
-git+https://github.com/Rapptz/discord.py@rewrite
+discord.py
