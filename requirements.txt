@@ -5,3 +5,7 @@ matplotlib
 bs4
 discord.py
 boto
+os
+youtube_dl
+asyncio
+time
