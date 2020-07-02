@@ -7,4 +7,3 @@ discord.py
 boto
 youtube_dl
 asyncio
-time
