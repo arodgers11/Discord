@@ -4,6 +4,10 @@ import youtube_dl
 import asyncio
 import time
 
+discord.opus.load_opus()
+if not discord.opus.is_loaded():
+    raise RunTimeError('Opus failed to load')
+
 allowed_channels=['stockfish-war-room','bots']
 
 ytdl_format_options = {
