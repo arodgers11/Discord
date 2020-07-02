@@ -1,7 +1,6 @@
 pandas
 requests
 numpy
-math
 matplotlib
 bs4
 discord.py
