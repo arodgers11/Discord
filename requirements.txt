@@ -4,6 +4,6 @@ numpy
 matplotlib
 bs4
 discord.py
-boto
+boto3
 youtube_dl
 asyncio
