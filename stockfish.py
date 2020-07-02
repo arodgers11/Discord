@@ -3,7 +3,7 @@ from discord.ext import commands
 from boto.s3.connection import S3Connection
 import os
 from boto.s3.connection import S3Connection
-TOKEN=S3Connection(os.environ['BOT_TOKEN']'])
+TOKEN=S3Connection(os.environ['BOT_TOKEN'])
 
 allowed_channels=['stockfish-war-room','bots']
 
