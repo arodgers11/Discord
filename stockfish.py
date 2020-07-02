@@ -1,8 +1,8 @@
 import discord
 import os
 from discord.ext import commands
-print(os.environ['BOT_TOKEN'])
-TOKEN='asdf'
+TOKEN=os.environ['BOT_TOKEN'])
+print(TOKEN)
 allowed_channels=['stockfish-war-room','bots']
 
 client=commands.Bot(command_prefix='.')
