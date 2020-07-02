@@ -7,3 +7,4 @@ discord.py
 boto
 youtube_dl
 asyncio
+PyNaCl
