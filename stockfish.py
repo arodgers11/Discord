@@ -1,7 +1,6 @@
 import discord
-from discord.ext import commands
-from boto.s3.connection import S3Connection
 import os
+from discord.ext import commands
 from boto.s3.connection import S3Connection
 TOKEN=S3Connection(os.environ['BOT_TOKEN'])
 
