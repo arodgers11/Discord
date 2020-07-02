@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands
+from boto.s3.connection import S3Connection
+TOKEN=S3Connection(os.environ['BOT_TOKEN'])
 
 allowed_channels=['stockfish-war-room','bots']
 
@@ -22,6 +24,6 @@ async def on_ready():
 client.load_extension('cogs.OWL_wiki')
 client.load_extension('cogs.Music')
         
-client.run('NzE4MDIyNzE3ODUyNDgzNjQ2.Xv1Ykw.Qtkzhm2fj04s7ZA04GyQXYcF6zQ',
+client.run(TOKEN,
            bot=True,
            reconnect=True)
