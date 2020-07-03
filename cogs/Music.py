@@ -4,7 +4,6 @@ import youtube_dl
 import asyncio
 import time
 
-discord.opus.load_opus()
 if not discord.opus.is_loaded():
     # the 'opus' library here is opus.dll on windows
     # or libopus.so on linux in the current directory
