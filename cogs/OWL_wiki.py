@@ -53,7 +53,7 @@ class OWL_wiki(commands.Cog):
 			except:
 				None
 								
-		if not table:
+		if table is not None:
 			await ctx.send("Team Not Found")
 			return
 				
