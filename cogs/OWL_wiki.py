@@ -55,7 +55,7 @@ class OWL_wiki(commands.Cog):
         df.index=['']*len(df)
         await ctx.send(df)
 
-    @commands.command(aliases=['liquipedia'])
+    @commands.command(aliases=['liquipedia','liq'])
     async def wiki(self,ctx,*team):
         """Gets the Liquipedia link for an OWL team.
         Can also use .teams , or .players to get the teams or players links, respectively"""

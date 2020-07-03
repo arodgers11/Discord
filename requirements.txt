@@ -9,3 +9,4 @@ youtube_dl
 asyncio
 PyNaCl
 opuslib==3.0.1
+lxml
