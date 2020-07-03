@@ -50,7 +50,7 @@ class OWL_wiki(commands.Cog):
 		table=None
 		for i in range(0,len(teams)):
 			try:
-				table=tables[i]['Active Squad'][['ID','Role']]
+				table=tables[i]['Active Squad'][['ID','Role']].sort(['Role','ID'])
 			except:
 				None
 								
