@@ -53,9 +53,9 @@ class OWL_wiki(commands.Cog):
 			except:
 				None
 								
-				if not table:
-						await ctx.send("Team Not Found")
-						return
+		if not table:
+			await ctx.send("Team Not Found")
+			return
 				
 		s=['']*len(table)
 		for i in range(0,len(table)):
