@@ -35,8 +35,8 @@ class OWL_wiki(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('OWL_wiki Loaded')
-
-    @commands.command(aliases=['get_team','roster'])
+		
+	@commands.command(aliases=['get_team','roster'])
     async def team(self,ctx,*,team):
         """Prints the active roster for an OWL team. Accepts partial names."""
         url='https://liquipedia.net'
@@ -45,7 +45,14 @@ class OWL_wiki(commands.Cog):
             if team.upper() in i.upper():
                 t=i
                 break
-        table=pd.read_html(requests.get(url+t).content)[1]['Active Squad'][['ID','Role']]
+        #tables=pd.read_html(requests.get('https://liquipedia.net/overwatch/Dallas_Fuel').content)
+        tables=pd.read_html(requests.get(url+t).content)
+        for i in range(0,len(teams)):
+            try:
+                table=tables[i]['Active Squad'][['ID','Role']]
+            except:
+                None
+                
         s=['']*len(table)
         for i in range(0,len(table)):
             s[i]=table['ID'][i]+' '+'.'*(25-len(table['ID'][i])-len(table['Role'][i]))+' '+table['Role'][i]
