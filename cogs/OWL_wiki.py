@@ -36,7 +36,7 @@ class OWL_wiki(commands.Cog):
     async def on_ready(self):
         print('OWL_wiki Loaded')
 		
-	@commands.command(aliases=['get_team','roster'])
+    @commands.command(aliases=['get_team','roster'])
     async def team(self,ctx,*,team):
         """Prints the active roster for an OWL team. Accepts partial names."""
         url='https://liquipedia.net'
@@ -52,10 +52,10 @@ class OWL_wiki(commands.Cog):
                 table=tables[i]['Active Squad'][['ID','Role']]
             except:
                 None
-				
-		if not table:
-			await ctx.send("Team Not Found")
-			return
+                                
+                if not table:
+                        await ctx.send("Team Not Found")
+                        return
                 
         s=['']*len(table)
         for i in range(0,len(table)):
