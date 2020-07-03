@@ -5,6 +5,7 @@ import asyncio
 import time
 
 if not discord.opus.is_loaded():
+
     # the 'opus' library here is opus.dll on windows
     # or libopus.so on linux in the current directory
     # you should replace this with the location the
