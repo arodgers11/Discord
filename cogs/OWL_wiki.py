@@ -47,13 +47,14 @@ class OWL_wiki(commands.Cog):
 				break
 		#tables=pd.read_html(requests.get('https://liquipedia.net/overwatch/Dallas_Fuel').content)
 		tables=pd.read_html(requests.get(url+t).content)
+		table=None
 		for i in range(0,len(teams)):
 			try:
 				table=tables[i]['Active Squad'][['ID','Role']]
 			except:
 				None
 								
-		if table is not None:
+		if table is None:
 			await ctx.send("Team Not Found")
 			return
 				
