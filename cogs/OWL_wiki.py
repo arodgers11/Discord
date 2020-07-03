@@ -52,6 +52,10 @@ class OWL_wiki(commands.Cog):
                 table=tables[i]['Active Squad'][['ID','Role']]
             except:
                 None
+				
+		if not table:
+			await ctx.send("Team Not Found")
+			return
                 
         s=['']*len(table)
         for i in range(0,len(table)):

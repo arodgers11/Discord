@@ -103,6 +103,8 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/rialto.mp3')
+			time.sleep(30)
+            await ctx.voice_client.disconnect()
             rialto='https://www.youtube.com/watch?v=z4hM5GG6QCg'
 
     @commands.command(aliases=['b'])
