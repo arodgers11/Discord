@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import os
 
-TOKEN='NzE4MDIyNzE3ODUyNDgzNjQ2.Xv2dLQ.D3RvfxRzIqXm4c5U_VnP6ccegNE'
+TOKEN=os.environ['BOT_TOKEN']
 
 allowed_channels=['stockfish-war-room','bots']
 
