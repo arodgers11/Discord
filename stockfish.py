@@ -18,8 +18,6 @@ client=commands.Bot(command_prefix='.')
 async def clear(ctx,amount):
     await ctx.channel.purge(limit=amount)
 
-client.load_extension('cogs.OWL_wiki')
-
 @client.command()
 async def load(ctx,ext):
     if ext.lower()=='music':
