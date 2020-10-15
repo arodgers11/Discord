@@ -60,7 +60,7 @@ class Music(commands.Cog):
     async def play(self, ctx, url):
         """Plays music from a YouTube url"""
         url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-		url='https://www.youtube.com/watch?v=d1YBv2mWll0'
+        url='https://www.youtube.com/watch?v=d1YBv2mWll0'
         player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=False)
         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
 
@@ -102,7 +102,7 @@ class Music(commands.Cog):
             time.sleep(1)
             await ctx.voice_client.disconnect()
 			
-	@commands.command()
+    @commands.command()
     async def scat(self,ctx):
         if not str(ctx.channel) in allowed_channels:
             return
@@ -153,6 +153,7 @@ class Music(commands.Cog):
     @penis.before_invoke
     @dallas.before_invoke
     @bruh.before_invoke
+    @scat before_invoke
     @pause.before_invoke
     @resume.before_invoke
     @boi.before_invoke
