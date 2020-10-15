@@ -31,6 +31,7 @@ async def load(ctx,ext):
     #client.load_extension(f'cogs.{extension}')
 	client.load_extension('cogs.Music')
     print('Music Loaded')
+    
 
 @client.command()
 async def unload(ctx,ext):
