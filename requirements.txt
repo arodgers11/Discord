@@ -3,7 +3,7 @@ requests
 numpy
 matplotlib
 bs4
-discord.py[voice]==1.2.5
+discord.py[voice]==1.5
 boto
 youtube_dl
 asyncio
