@@ -84,16 +84,8 @@ class Music(commands.Cog):
     async def leave(self, ctx):
         """Stops music and disconnects the bot from voice"""
         await ctx.voice_client.disconnect()
-        
-    @commands.command(aliases=['fuel','burnblue','Dallas','Fuel','BurnBlue'])
-    async def dallas(self,ctx):
-        if not str(ctx.channel) in allowed_channels:
-            return
-        else:
-            play_file(ctx,'./cogs/sounds/rialto.mp3')
-            rialto='https://www.youtube.com/watch?v=z4hM5GG6QCg'
 
-    @commands.command(aliases=['b'])
+    @commands.command()
     async def bruh(self,ctx):
         if not str(ctx.channel) in allowed_channels:
             return
@@ -101,6 +93,14 @@ class Music(commands.Cog):
             play_file(ctx,'./cogs/sounds/bruh.mp3')
             time.sleep(1)
             await ctx.voice_client.disconnect()
+
+    @commands.command(aliases=['fuel','burnblue','Dallas','Fuel','BurnBlue'])
+    async def dallas(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/rialto.mp3')
+            rialto='https://www.youtube.com/watch?v=z4hM5GG6QCg'
 			
     @commands.command()
     async def scat(self,ctx):
@@ -141,13 +141,15 @@ class Music(commands.Cog):
             await ctx.send('Hello **{}**!!'.format(ctx.author.name))
 			
     @commands.command()
-    async def boi(self,ctx):
+    async def scat(self,ctx):
         """YEAH BOIIIIIII"""
         yeah_boi='https://www.youtube.com/watch?v=5aopMm7UGYA'
-        player = await YTDLSource.from_url(yeah_boi,loop=self.bot.loop,stream=False)
-        ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-        time.sleep(30)
-        await ctx.voice_client.disconnect()
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/boi.mp3')
+            time.sleep(30)
+            await ctx.voice_client.disconnect()
 			
     @play.before_invoke
     @penis.before_invoke
