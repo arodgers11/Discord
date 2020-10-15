@@ -10,3 +10,4 @@ asyncio
 PyNaCl
 opuslib==3.0.1
 lxml
+bs4
