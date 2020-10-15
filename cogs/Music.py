@@ -113,14 +113,14 @@ class Music(commands.Cog):
                                 
     @commands.command(aliases=['cock'])
     async def penis(self, ctx):
-    if not str(ctx.channel) in allowed_channels:
-        return
-    else:
-        nice_cock='https://www.youtube.com/watch?v=JdCq2i1dA6w'
-        player = await YTDLSource.from_url(nice_cock,loop=self.bot.loop,stream=False)
-        ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-        time.sleep(26)
-        await ctx.voice_client.disconnect()
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            nice_cock='https://www.youtube.com/watch?v=JdCq2i1dA6w'
+            player = await YTDLSource.from_url(nice_cock,loop=self.bot.loop,stream=False)
+            ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+            time.sleep(26)
+            await ctx.voice_client.disconnect()
 
     @commands.command()
     async def hello(self,ctx,*s):
