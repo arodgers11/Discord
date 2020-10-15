@@ -6,6 +6,8 @@ allowed_channels=['stockfish-war-room','bots']
 
 client=commands.Bot(command_prefix='.')
 
+TOKEN=os.environ['BOT_TOKEN']
+
 @client.event
 async def on_ready():
     print('READY')
@@ -16,7 +18,7 @@ client=commands.Bot(command_prefix='.')
 async def clear(ctx,amount=20):
     await ctx.channel.purge(limit=amount)
 
-client.load_extension('cogs.OWL_wiki')
+#client.load_extension('cogs.OWL_wiki')
 
 @client.command()
 async def load(ctx,ext):
@@ -26,8 +28,9 @@ async def load(ctx,ext):
         # extension='OWL_wiki'
     # if ext.lower()=='stats':
         # extension='OWL_stats'
-    client.load_extension(f'cogs.{extension}')
-    print(f'{extension} Loaded')
+    #client.load_extension(f'cogs.{extension}')
+	client.load_extension(cog.Music)
+    print('Music Loaded')
 
 @client.command()
 async def unload(ctx,ext):
@@ -44,4 +47,4 @@ async def unload(ctx,ext):
 async def on_ready():
     print('READY')
         
-client.run(os.environ['BOT_TOKEN'])
+client.run(TOKEN,bot=True,reconnect=True)
