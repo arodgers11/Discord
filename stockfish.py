@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 import os
 
-TOKEN='NzE4MDIyNzE3ODUyNDgzNjQ2.XwVLCQ.hzuLdgeKfMdj-aP8yZohFyvHS0Q'
-
 allowed_channels=['stockfish-war-room','bots']
 
 client=commands.Bot(command_prefix='.')
