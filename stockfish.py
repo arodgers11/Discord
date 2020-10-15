@@ -29,7 +29,7 @@ async def load(ctx,ext):
     # if ext.lower()=='stats':
         # extension='OWL_stats'
     #client.load_extension(f'cogs.{extension}')
-	client.load_extension(cog.Music)
+	client.load_extension('cogs.Music')
     print('Music Loaded')
 
 @client.command()
