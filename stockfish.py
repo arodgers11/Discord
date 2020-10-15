@@ -24,10 +24,10 @@ client.load_extension('cogs.Music')
 async def load(ctx,ext):
     if ext.lower()=='music':
         extension='Music'
-     if ext.lower()=='wiki':
-         extension='OWL_wiki'
-     if ext.lower()=='stats':
-         extension='OWL_stats'
+    if ext.lower()=='wiki':
+        extension='OWL_wiki'
+    if ext.lower()=='stats':
+        extension='OWL_stats'
     client.load_extension(f'cogs.{extension}')
     client.load_extension('cogs.Music')
     print('Music Loaded')
