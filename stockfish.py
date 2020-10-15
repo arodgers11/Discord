@@ -44,4 +44,4 @@ async def unload(ctx,ext):
 async def on_ready():
     print('READY')
         
-client.run(os.environ['BOT_TOKEN'],bot=True,reconnect=True)
+client.run(os.environ['BOT_TOKEN'])
