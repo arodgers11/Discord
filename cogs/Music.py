@@ -153,7 +153,7 @@ class Music(commands.Cog):
     @penis.before_invoke
     @dallas.before_invoke
     @bruh.before_invoke
-    @scat before_invoke
+    @scat.before_invoke
     @pause.before_invoke
     @resume.before_invoke
     @boi.before_invoke
