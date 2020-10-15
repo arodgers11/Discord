@@ -152,8 +152,8 @@ class Music(commands.Cog):
     @play.before_invoke
     @penis.before_invoke
     @dallas.before_invoke
-    @bruh.before_invoke
     @scat.before_invoke
+    @bruh.before_invoke
     @pause.before_invoke
     @resume.before_invoke
     @boi.before_invoke
