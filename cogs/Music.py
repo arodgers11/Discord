@@ -9,7 +9,7 @@ allowed_channels=['stockfish-war-room','bots']
 ytdl_format_options = {
     'format': 'bestaudio/best',
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
-    'restrictfilenames': True,
+    'restrictfilenames': False,
     'noplaylist': True,
     'nocheckcertificate': True,
     'ignoreerrors': False,
@@ -29,7 +29,7 @@ ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 players={}
 
 def play_file(ctx,file_path):
-    ctx.voice_client.play(discord.FFmpegPCMAudio(executable='./FFmpeg/bin/ffmpeg.exe', source=file_path))
+    ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
     
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
