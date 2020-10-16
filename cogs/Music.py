@@ -49,8 +49,11 @@ class YTDLSource(discord.PCMVolumeTransformer):
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)
 
 class Music(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self,bot):
         self.bot = bot
+        self.current_sound=None
+        self.voice_chat=None
+        self.is_playing=self.current_sound and self.voice_chat
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -60,7 +63,6 @@ class Music(commands.Cog):
     async def play(self, ctx, url):
         """Plays music from a YouTube url"""
         url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        url='https://www.youtube.com/watch?v=d1YBv2mWll0'
         player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=False)
         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
 
@@ -83,8 +85,64 @@ class Music(commands.Cog):
     @commands.command(aliases=['stop','l'])
     async def leave(self, ctx):
         """Stops music and disconnects the bot from voice"""
+        await ctx.voice_client.stop()
         await ctx.voice_client.disconnect()
-
+        
+################################################################
+    @commands.command()
+    async def alert(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/alert.mp3')
+            time.sleep(2)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def again(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/again.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def bill(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/bill.mp3')
+            time.sleep(30)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def boi(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/boi.mp3')
+            time.sleep(32)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def boo(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/boo.mp3')
+            time.sleep(2)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def bourne(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/bourne.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
     @commands.command()
     async def bruh(self,ctx):
         if not str(ctx.channel) in allowed_channels:
@@ -93,15 +151,133 @@ class Music(commands.Cog):
             play_file(ctx,'./cogs/sounds/bruh.mp3')
             time.sleep(1)
             await ctx.voice_client.disconnect()
-
-    @commands.command(aliases=['fuel','burnblue','Dallas','Fuel','BurnBlue'])
-    async def dallas(self,ctx):
+                
+    @commands.command()
+    async def cena(self,ctx):
         if not str(ctx.channel) in allowed_channels:
             return
         else:
-            play_file(ctx,'./cogs/sounds/rialto.mp3')
-            rialto='https://www.youtube.com/watch?v=z4hM5GG6QCg'
-			
+            play_file(ctx,'./cogs/sounds/cena.mp3')
+            time.sleep(15)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def crickets(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/crickets.mp3')
+            time.sleep(10)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def damage(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/damage.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def disbelief(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/disbelief.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def dreams(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/dreams.mp3')
+            time.sleep(19)
+            await ctx.voice_client.disconnect()
+                
+    @commands.command()
+    async def horns(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/horns.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def lbj(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/lbj.mp3')
+            time.sleep(6)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def leedle(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/leedle.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def leeroy(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/leeroy.mp3')
+            time.sleep(5)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def loser(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/loser.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def mission(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/mission.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def nope(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/nope.mp3')
+            time.sleep(1)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def over9000(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/over9000.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def ph(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/ph.mp3')
+            time.sleep(3)
+            await ctx.voice_client.disconnect()
+            
     @commands.command()
     async def scat(self,ctx):
         if not str(ctx.channel) in allowed_channels:
@@ -110,6 +286,86 @@ class Music(commands.Cog):
             play_file(ctx,'./cogs/sounds/scat.mp3')
             time.sleep(6)
             await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def shia(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/shia.mp3')
+            time.sleep(5)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def simp(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/simp.mp3')
+            time.sleep(11)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def skinny(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/skinny.mp3')
+            time.sleep(4)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def suit(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/suit.mp3')
+            time.sleep(4)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def svu(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/svu.mp3')
+            time.sleep(2)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def trombone(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/trombone.mp3')
+            time.sleep(4)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def wilhelm(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/wilhelm.mp3')
+            time.sleep(2)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def yakuza(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/yakuza.mp3')
+            time.sleep(30)
+            await ctx.voice_client.disconnect()
+            
+    @commands.command()
+    async def dallas(self,ctx):
+        if not str(ctx.channel) in allowed_channels:
+            return
+        else:
+            play_file(ctx,'./cogs/sounds/rialto.mp3')
+            rialto='https://www.youtube.com/watch?v=z4hM5GG6QCg'
                                 
     @commands.command(aliases=['cock'])
     async def penis(self, ctx):
@@ -117,7 +373,7 @@ class Music(commands.Cog):
             return
         else:
             nice_cock='https://www.youtube.com/watch?v=JdCq2i1dA6w'
-            player = await YTDLSource.from_url(nice_cock,loop=self.bot.loop,stream=False)
+            player = await YTDLSource.from_url(nice_cock,loop=self.bot.loop,stream=True)
             ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
             time.sleep(26)
             await ctx.voice_client.disconnect()
@@ -135,34 +391,57 @@ class Music(commands.Cog):
                         time.sleep(14)
                         await ctx.voice_client.disconnect()
                     else:
-                        await ctx.send("You are not connected to a voice channel.")
-                        raise commands.CommandError("Author not connected to a voice channel.")
+                        await ctx.send("General Kenobi")
         if len(s)==0:
             await ctx.send('Hello **{}**!!'.format(ctx.author.name))
 			
     @commands.command()
-    async def scat(self,ctx):
+    async def yeahboi(self,ctx):
         """YEAH BOIIIIIII"""
         yeah_boi='https://www.youtube.com/watch?v=5aopMm7UGYA'
-        if not str(ctx.channel) in allowed_channels:
-            return
-        else:
-            play_file(ctx,'./cogs/sounds/boi.mp3')
-            time.sleep(30)
-            await ctx.voice_client.disconnect()
+        player = await YTDLSource.from_url(yeah_boi,loop=self.bot.loop,stream=False)
+        ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+        time.sleep(30)
+        await ctx.voice_client.disconnect()
 			
-    @play.before_invoke
-    @penis.before_invoke
-    @dallas.before_invoke
-    @scat.before_invoke
-    @bruh.before_invoke
-    @pause.before_invoke
-    @resume.before_invoke
+    @again.before_invoke
+    @alert.before_invoke
+    @bill.before_invoke
     @boi.before_invoke
+    @boo.before_invoke
+    @bourne.before_invoke
+    @bruh.before_invoke
+    @cena.before_invoke
+    @crickets.before_invoke
+    @damage.before_invoke
+    @disbelief.before_invoke
+    @dreams.before_invoke
+    @horns.before_invoke
+    @lbj.before_invoke
+    @leedle.before_invoke
+    @leeroy.before_invoke
+    @loser.before_invoke
+    @mission.before_invoke
+    @nope.before_invoke
+    @over9000.before_invoke
+    @ph.before_invoke
+    @scat.before_invoke
+    @shia.before_invoke
+    @simp.before_invoke
+    @skinny.before_invoke
+    @suit.before_invoke
+    @svu.before_invoke
+    @trombone.before_invoke
+    @wilhelm.before_invoke
+    @yakuza.before_invoke
+    @dallas.before_invoke
+    @penis.before_invoke
+    @yeahboi.before_invoke
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
                 await ctx.author.voice.channel.connect()
+                self.voice_channel=ctx.author.voice.channel
             else:
                 await ctx.send("You are not connected to a voice channel.")
                 raise commands.CommandError("Author not connected to a voice channel.")
