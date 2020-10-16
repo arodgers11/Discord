@@ -1,0 +1,38 @@
+  again     
+  alert     
+  bill      lower volume 20%
+  boi       
+  boo       
+  bourne    
+  bruh      
+  cena      
+  crickets  ???
+  dallas    
+  damage    clip
+  disbelief ???
+  dreams    ???
+  hello     Says hello, obviously
+  horns      lower volume 50%
+  lbj       
+  leave     Stops music and disconnects the bot from voice
+  leedle    
+  leeroy    
+  loser     ???
+  mission   ???
+  nope      
+  over9000  
+  pause     
+  penis     
+  ph        
+  play      Plays music from a YouTube url
+  resume    
+  scat      
+  shia      ???
+  simp      
+  skinny    ???
+  suit      ???
+  svu       
+  trombone  
+  wilhelm   
+  yakuza    
+  yeahboi   YEAH BOIIIIIII
