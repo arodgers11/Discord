@@ -29,7 +29,7 @@ ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 players={}
 
 def play_file(ctx,file_path):
-    ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
+    ctx.voice_client.play(discord.FFmpegPCMAudio(executable='./FFmpeg/bin/ffmpeg.exe', source=file_path))
     
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
@@ -51,9 +51,17 @@ class YTDLSource(discord.PCMVolumeTransformer):
 class Music(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
-        self.current_sound=None
-        self.voice_chat=None
-        self.is_playing=self.current_sound and self.voice_chat
+        
+    async def player(self,ctx):
+        while  ctx.voice_client:
+            while ctx.voice_client.is_playing() or ctx.voice_client.is_paused():
+                await asyncio.sleep(1)
+                if not ctx.voice_client:
+                    break
+            if ctx.voice_client:
+                await ctx.voice_client.disconnect()
+            else:
+                return
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -82,10 +90,9 @@ class Music(commands.Cog):
         else:
             return
 
-    @commands.command(aliases=['stop','l'])
+    @commands.command(aliases=['stop','stfu'])
     async def leave(self, ctx):
         """Stops music and disconnects the bot from voice"""
-        await ctx.voice_client.stop()
         await ctx.voice_client.disconnect()
         
 ################################################################
@@ -95,8 +102,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/alert.mp3')
-            time.sleep(2)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def again(self,ctx):
@@ -104,8 +110,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/again.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def bill(self,ctx):
@@ -113,8 +118,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/bill.mp3')
-            time.sleep(30)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def boi(self,ctx):
@@ -122,8 +126,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/boi.mp3')
-            time.sleep(32)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def boo(self,ctx):
@@ -131,8 +134,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/boo.mp3')
-            time.sleep(2)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def bourne(self,ctx):
@@ -140,8 +142,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/bourne.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def bruh(self,ctx):
@@ -149,8 +150,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/bruh.mp3')
-            time.sleep(1)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def cena(self,ctx):
@@ -158,8 +158,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/cena.mp3')
-            time.sleep(15)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def crickets(self,ctx):
@@ -167,8 +166,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/crickets.mp3')
-            time.sleep(10)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def damage(self,ctx):
@@ -176,8 +174,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/damage.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def disbelief(self,ctx):
@@ -185,8 +182,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/disbelief.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def dreams(self,ctx):
@@ -194,8 +190,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/dreams.mp3')
-            time.sleep(19)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
                 
     @commands.command()
     async def horns(self,ctx):
@@ -203,8 +198,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/horns.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def lbj(self,ctx):
@@ -212,8 +206,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/lbj.mp3')
-            time.sleep(6)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def leedle(self,ctx):
@@ -221,8 +214,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/leedle.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def leeroy(self,ctx):
@@ -230,8 +222,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/leeroy.mp3')
-            time.sleep(5)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def loser(self,ctx):
@@ -239,8 +230,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/loser.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def mission(self,ctx):
@@ -248,8 +238,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/mission.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def nope(self,ctx):
@@ -257,8 +246,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/nope.mp3')
-            time.sleep(1)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def over9000(self,ctx):
@@ -266,8 +254,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/over9000.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def ph(self,ctx):
@@ -275,8 +262,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/ph.mp3')
-            time.sleep(3)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def scat(self,ctx):
@@ -284,8 +270,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/scat.mp3')
-            time.sleep(6)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def shia(self,ctx):
@@ -293,8 +278,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/shia.mp3')
-            time.sleep(5)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def simp(self,ctx):
@@ -302,8 +286,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/simp.mp3')
-            time.sleep(11)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def skinny(self,ctx):
@@ -311,8 +294,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/skinny.mp3')
-            time.sleep(4)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def suit(self,ctx):
@@ -320,8 +302,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/suit.mp3')
-            time.sleep(4)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def svu(self,ctx):
@@ -329,17 +310,15 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/svu.mp3')
-            time.sleep(2)
-            await ctx.voice_client.disconnect()
-            
+            await self.player(ctx)
+        
     @commands.command()
     async def trombone(self,ctx):
         if not str(ctx.channel) in allowed_channels:
             return
         else:
             play_file(ctx,'./cogs/sounds/trombone.mp3')
-            time.sleep(4)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def wilhelm(self,ctx):
@@ -347,8 +326,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/wilhelm.mp3')
-            time.sleep(2)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def yakuza(self,ctx):
@@ -356,8 +334,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/yakuza.mp3')
-            time.sleep(30)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
             
     @commands.command()
     async def dallas(self,ctx):
@@ -365,6 +342,7 @@ class Music(commands.Cog):
             return
         else:
             play_file(ctx,'./cogs/sounds/rialto.mp3')
+            await self.player(ctx)
             rialto='https://www.youtube.com/watch?v=z4hM5GG6QCg'
                                 
     @commands.command(aliases=['cock'])
@@ -375,12 +353,11 @@ class Music(commands.Cog):
             nice_cock='https://www.youtube.com/watch?v=JdCq2i1dA6w'
             player = await YTDLSource.from_url(nice_cock,loop=self.bot.loop,stream=True)
             ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-            time.sleep(26)
-            await ctx.voice_client.disconnect()
+            await self.player(ctx)
 
     @commands.command()
     async def hello(self,ctx,*s):
-        """Says hello, obviously"""
+        """Says hello"""
         if len(s)>0:
             if s[0].lower()=='there':
                 if ctx.voice_client is None:
@@ -388,21 +365,11 @@ class Music(commands.Cog):
                         await ctx.author.voice.channel.connect()
                         player = await YTDLSource.from_url('https://www.youtube.com/watch?v=rEq1Z0bjdwc',loop=self.bot.loop,stream=False)
                         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-                        time.sleep(14)
-                        await ctx.voice_client.disconnect()
+                        await self.player(ctx)
                     else:
                         await ctx.send("General Kenobi")
         if len(s)==0:
             await ctx.send('Hello **{}**!!'.format(ctx.author.name))
-			
-    @commands.command()
-    async def yeahboi(self,ctx):
-        """YEAH BOIIIIIII"""
-        yeah_boi='https://www.youtube.com/watch?v=5aopMm7UGYA'
-        player = await YTDLSource.from_url(yeah_boi,loop=self.bot.loop,stream=False)
-        ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-        time.sleep(30)
-        await ctx.voice_client.disconnect()
 			
     @again.before_invoke
     @alert.before_invoke
@@ -436,7 +403,7 @@ class Music(commands.Cog):
     @yakuza.before_invoke
     @dallas.before_invoke
     @penis.before_invoke
-    @yeahboi.before_invoke
+    
     async def ensure_voice(self, ctx):
         if ctx.voice_client is None:
             if ctx.author.voice:
