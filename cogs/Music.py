@@ -311,7 +311,7 @@ class Music(commands.Cog):
     @suit.before_invoke
     @svu.before_invoke
     @trombone.before_invoke
-    @violin.befire_invoke
+    @violin.before_invoke
     @wilhelm.before_invoke
     @yakuza.before_invoke
     @dallas.before_invoke
