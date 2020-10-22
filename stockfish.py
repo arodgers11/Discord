@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import os
 
-allowed_channels=['stockfish-war-room','bots']
+#allowed_channels=['stockfish-war-room','bots']
 
 client=commands.Bot(command_prefix='.')
 
