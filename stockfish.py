@@ -1,8 +1,7 @@
 import discord
 from discord.ext import commands
+import asyncio
 import os
-
-#allowed_channels=['stockfish-war-room','bots']
 
 client=commands.Bot(command_prefix='.')
 
@@ -17,32 +16,26 @@ client=commands.Bot(command_prefix='.')
 @client.command(aliases=['c'])
 async def clear(ctx,amount=20):
     await ctx.channel.purge(limit=amount)
+    
+@client.event
+async def on_voice_state_update(member, before, after):
+    if after.channel is not None and not member.bot:
+        if not before.self_deaf and not before.self_mute and not after.self_deaf and not after.self_mute:
+            if after.channel.name in ['Lt. Deen\'s Alpha Squad','OW Bravo Squad','The War Room']:
+                await asyncio.sleep(1)
+                if not client.voice_clients:
+                    vc = await after.channel.connect()
+                else:
+                    vc = client.voice_clients[0]
+                print(member.display_name)
+                if vc and not vc.is_playing():
+                    vc.play(discord.FFmpegPCMAudio(f'./cogs/sounds/walk-on/{member.display_name}.mp3'), after=lambda e: print('done', e))
+                    while vc.is_playing():
+                        await asyncio.sleep(1)
+                await vc.disconnect()
 
 client.load_extension('cogs.Music')
-
-@client.command()
-async def load(ctx,ext):
-    if ext.lower()=='music':
-        extension='Music'
-    if ext.lower()=='wiki':
-        extension='OWL_wiki'
-    if ext.lower()=='stats':
-        extension='OWL_stats'
-    client.load_extension(f'cogs.{extension}')
-    client.load_extension('cogs.Music')
-    print('Music Loaded')
-    
-
-@client.command()
-async def unload(ctx,ext):
-    if ext.lower()=='music':
-        extension='Music'
-    if ext.lower()=='wiki':
-        extension='OWL_wiki'
-    if ext.lower()=='stats':
-        extension='OWL_stats'
-    client.unload_extension(f'cogs.{extension}')
-    print(f'{extension} Unloaded')
+client.load_extension('OWL_wiki')
 
 @client.event
 async def on_ready():

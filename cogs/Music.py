@@ -4,8 +4,6 @@ import youtube_dl
 import asyncio
 import time
 
-#allowed_channels=['stockfish-war-room','bots']
-
 ytdl_format_options = {
     'format': 'bestaudio/best',
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
@@ -25,8 +23,6 @@ ffmpeg_options = {
     }
 
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
-
-players={}
 
 def play_file(ctx,file_path):
     ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
@@ -150,6 +146,11 @@ class Music(commands.Cog):
         await self.player(ctx)
                 
     @commands.command()
+    async def damn(self,ctx):
+        play_file(ctx,'./cogs/sounds/damn.mp3')
+        await self.player(ctx)
+                
+    @commands.command()
     async def disbelief(self,ctx):
         play_file(ctx,'./cogs/sounds/disbelief.mp3')
         await self.player(ctx)
@@ -202,6 +203,11 @@ class Music(commands.Cog):
     @commands.command()
     async def ph(self,ctx):
         play_file(ctx,'./cogs/sounds/ph.mp3')
+        await self.player(ctx)
+        
+    @commands.command()
+    async def peepee(self,ctx):
+        play_file(ctx,'./cogs/sounds/peepee.mp3')
         await self.player(ctx)
             
     @commands.command()
@@ -293,6 +299,7 @@ class Music(commands.Cog):
     @cena.before_invoke
     @crickets.before_invoke
     @damage.before_invoke
+    @damn.before_invoke
     @disbelief.before_invoke
     @dreams.before_invoke
     @horns.before_invoke
