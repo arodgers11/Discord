@@ -23,7 +23,7 @@ async def on_voice_state_update(member, before, after):
         if not before.self_deaf and not before.self_mute and not after.self_deaf and not after.self_mute:
             if after.channel.name in ['Lt. Deen\'s Alpha Squad','OW Bravo Squad','The War Room']:
                 await asyncio.sleep(1)
-                if not client.voice_clients:
+                if not client.voice_clients and cogs.f'./cogs/sounds/walk-on/{member.display_name}.mp3':
                     vc = await after.channel.connect()
                 else:
                     vc = client.voice_clients[0]

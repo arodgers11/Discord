@@ -69,13 +69,13 @@ class OWL_wiki(commands.Cog):
         """Gets the Liquipedia link for an OWL team.
         Can also use .teams , or .players to get the teams or players links, respectively"""
         url='<https://liquipedia.net'
-        if len(team)==0:
+        if len(team[0])==0:
             await ctx.send(url+'/overwatch/Overwatch_League>')
             return
-        if team=='players':
+        if team[0]=='players':
             await ctx.send(url+'/overwatch/Players>')
             return
-        if team=='teams':
+        if team[0]=='teams':
             await ctx.send(url+'/overwatch/Portal:Teams/Overwatch_League>')
             return
         for i in teams:

@@ -281,7 +281,7 @@ class Music(commands.Cog):
                 if ctx.voice_client is None:
                     if ctx.author.voice:
                         await ctx.author.voice.channel.connect()
-                        player = await YTDLSource.from_url('https://www.youtube.com/watch?v=rEq1Z0bjdwc',loop=self.bot.loop,stream=False)
+                        player = await YTDLSource.from_url('https://www.youtube.com/watch?v=rEq1Z0bjdwc',loop=self.bot.loop,stream=True)
                         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
                         await self.player(ctx)
                     else:
