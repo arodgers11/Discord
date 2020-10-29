@@ -35,7 +35,7 @@ async def on_voice_state_update(member, before, after):
                 await vc.disconnect()
 
 client.load_extension('cogs.Music')
-client.load_extension('OWL_wiki')
+client.load_extension('cogs.OWL_wiki')
 
 @client.event
 async def on_ready():
