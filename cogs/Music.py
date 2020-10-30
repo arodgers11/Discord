@@ -79,28 +79,28 @@ class Music(commands.Cog):
     async def on_ready(self):
         print('Music Loaded')
 
-    @commands.command()
-    async def play(self, ctx, url):
-        """Plays music from a YouTube url"""
-        url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=True)
-        ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+    # @commands.command()
+    # async def play(self, ctx, url):
+        # """Plays music from a YouTube url"""
+        # url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        # player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=True)
+        # ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
 
-    @commands.command(aliases=['p'])
-    async def pause(self,ctx):
-        paused = ctx.voice_client.is_paused()
-        if not paused:
-            ctx.voice_client.pause()
-        else:
-            return
+    # @commands.command(aliases=['p'])
+    # async def pause(self,ctx):
+        # paused = ctx.voice_client.is_paused()
+        # if not paused:
+            # ctx.voice_client.pause()
+        # else:
+            # return
 
-    @commands.command(aliases=['r'])
-    async def resume(self,ctx):
-        paused = ctx.voice_client.is_paused()
-        if paused:
-            ctx.voice_client.resume()
-        else:
-            return
+    # @commands.command(aliases=['r'])
+    # async def resume(self,ctx):
+        # paused = ctx.voice_client.is_paused()
+        # if paused:
+            # ctx.voice_client.resume()
+        # else:
+            # return
 
     @commands.command(aliases=['stop','stfu'])
     async def leave(self, ctx):
