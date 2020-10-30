@@ -4,6 +4,8 @@ import youtube_dl
 import asyncio
 import time
 
+spam_lock=time.time()
+
 ytdl_format_options = {
     'format': 'bestaudio/best',
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
@@ -25,6 +27,7 @@ ffmpeg_options = {
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
 def play_file(ctx,file_path):
+    global spam_lock
     if time.time()-spam_lock>=10:
         spam_lock=time.time()
         ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
