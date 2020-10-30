@@ -28,7 +28,7 @@ ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
 spam_lock=time.time()
 
-def play_file(ctx,file_path):
+async def play_file(ctx,file_path):
     global spam_lock
     if time.time()-spam_lock<10:
         spam_lock=time.time()
@@ -114,187 +114,187 @@ class Music(commands.Cog):
 
     @commands.command()
     async def alert(self,ctx):
-        play_file(ctx,'./cogs/sounds/alert.mp3')
+        await play_file(ctx,'./cogs/sounds/alert.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def again(self,ctx):
-        play_file(ctx,'./cogs/sounds/again.mp3')
+        await play_file(ctx,'./cogs/sounds/again.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def bill(self,ctx):
-        play_file(ctx,'./cogs/sounds/bill.mp3')
+        await play_file(ctx,'./cogs/sounds/bill.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def boi(self,ctx):
-        play_file(ctx,'./cogs/sounds/boi.mp3')
+        await play_file(ctx,'./cogs/sounds/boi.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def boo(self,ctx):
-        play_file(ctx,'./cogs/sounds/boo.mp3')
+        await play_file(ctx,'./cogs/sounds/boo.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def bourne(self,ctx):
-        play_file(ctx,'./cogs/sounds/bourne.mp3')
+        await play_file(ctx,'./cogs/sounds/bourne.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def bruh(self,ctx):
-        play_file(ctx,'./cogs/sounds/bruh.mp3')
+        await play_file(ctx,'./cogs/sounds/bruh.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def cena(self,ctx):
-        play_file(ctx,'./cogs/sounds/cena.mp3')
+        await play_file(ctx,'./cogs/sounds/cena.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def crickets(self,ctx):
-        play_file(ctx,'./cogs/sounds/crickets.mp3')
+        await play_file(ctx,'./cogs/sounds/crickets.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def damage(self,ctx):
-        play_file(ctx,'./cogs/sounds/damage.mp3')
+        await play_file(ctx,'./cogs/sounds/damage.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def damn(self,ctx):
-        play_file(ctx,'./cogs/sounds/damn.mp3')
+        await play_file(ctx,'./cogs/sounds/damn.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def disbelief(self,ctx):
-        play_file(ctx,'./cogs/sounds/disbelief.mp3')
+        await play_file(ctx,'./cogs/sounds/disbelief.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def dreams(self,ctx):
-        play_file(ctx,'./cogs/sounds/dreams.mp3')
+        await play_file(ctx,'./cogs/sounds/dreams.mp3')
         await self.player(ctx)
                 
     @commands.command()
     async def horns(self,ctx):
-        play_file(ctx,'./cogs/sounds/horns.mp3')
+        await play_file(ctx,'./cogs/sounds/horns.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def lbj(self,ctx):
-        play_file(ctx,'./cogs/sounds/lbj.mp3')
+        await play_file(ctx,'./cogs/sounds/lbj.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def leedle(self,ctx):
-        play_file(ctx,'./cogs/sounds/leedle.mp3')
+        await play_file(ctx,'./cogs/sounds/leedle.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def leeroy(self,ctx):
-        play_file(ctx,'./cogs/sounds/leeroy.mp3')
+        await play_file(ctx,'./cogs/sounds/leeroy.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def loser(self,ctx):
-        play_file(ctx,'./cogs/sounds/loser.mp3')
+        await play_file(ctx,'./cogs/sounds/loser.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def mission(self,ctx):
-        play_file(ctx,'./cogs/sounds/mission.mp3')
+        await play_file(ctx,'./cogs/sounds/mission.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def nope(self,ctx):
-        play_file(ctx,'./cogs/sounds/nope.mp3')
+        await play_file(ctx,'./cogs/sounds/nope.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def pain(self,ctx):
-        play_file(ctx,'./cogs/sounds/pain.mp3')
+        await play_file(ctx,'./cogs/sounds/pain.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def peepee(self,ctx):
-        play_file(ctx,'./cogs/sounds/peepee.mp3')
+        await play_file(ctx,'./cogs/sounds/peepee.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def over9000(self,ctx):
-        play_file(ctx,'./cogs/sounds/over9000.mp3')
+        await play_file(ctx,'./cogs/sounds/over9000.mp3')
         await self.player(ctx)
         
     @commands.command()
     async def ph(self,ctx):
-        play_file(ctx,'./cogs/sounds/ph.mp3')
+        await play_file(ctx,'./cogs/sounds/ph.mp3')
         await self.player(ctx)
         
     @commands.command()
     async def peepee(self,ctx):
-        play_file(ctx,'./cogs/sounds/peepee.mp3')
+        await play_file(ctx,'./cogs/sounds/peepee.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def scat(self,ctx):
-        play_file(ctx,'./cogs/sounds/scat.mp3')
+        await play_file(ctx,'./cogs/sounds/scat.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def shia(self,ctx):
-        play_file(ctx,'./cogs/sounds/shia.mp3')
+        await play_file(ctx,'./cogs/sounds/shia.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def simp(self,ctx):
-        play_file(ctx,'./cogs/sounds/simp.mp3')
+        await play_file(ctx,'./cogs/sounds/simp.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def skinny(self,ctx):
-        play_file(ctx,'./cogs/sounds/skinny.mp3')
+        await play_file(ctx,'./cogs/sounds/skinny.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def suit(self,ctx):
-        play_file(ctx,'./cogs/sounds/suit.mp3')
+        await play_file(ctx,'./cogs/sounds/suit.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def svu(self,ctx):
-        play_file(ctx,'./cogs/sounds/svu.mp3')
+        await play_file(ctx,'./cogs/sounds/svu.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def tralala(self,ctx):
-        play_file(ctx,'./cogs/sounds/tralala.mp3')
+        await play_file(ctx,'./cogs/sounds/tralala.mp3')
         await self.player(ctx)
         
     @commands.command()
     async def trombone(self,ctx):
-        play_file(ctx,'./cogs/sounds/trombone.mp3')
+        await play_file(ctx,'./cogs/sounds/trombone.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def violin(self,ctx):
-        play_file(ctx,'./cogs/sounds/violin.mp3')
+        await play_file(ctx,'./cogs/sounds/violin.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def wilhelm(self,ctx):
-        play_file(ctx,'./cogs/sounds/wilhelm.mp3')
+        await play_file(ctx,'./cogs/sounds/wilhelm.mp3')
         await self.player(ctx)
             
     @commands.command()
     async def yakuza(self,ctx):
-        play_file(ctx,'./cogs/sounds/yakuza.mp3')
+        await play_file(ctx,'./cogs/sounds/yakuza.mp3')
         await self.player(ctx)
         
     @commands.command()
     async def dallas(self,ctx):
-        play_file(ctx,'./cogs/sounds/rialto.mp3')
+        await play_file(ctx,'./cogs/sounds/rialto.mp3')
         await self.player(ctx)
         rialto='https://www.youtube.com/watch?v=z4hM5GG6QCg'
                                 
