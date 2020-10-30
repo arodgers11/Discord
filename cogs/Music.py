@@ -51,15 +51,20 @@ class Music(commands.Cog):
         self.bot = bot
         
     async def player(self,ctx):
-        while  ctx.voice_client:
-            while ctx.voice_client.is_playing() or ctx.voice_client.is_paused():
-                await asyncio.sleep(1)
-                if not ctx.voice_client:
-                    break
-            if ctx.voice_client:
-                await ctx.voice_client.disconnect()
-            else:
-                return
+        global spam_lock
+        if time.time()-spam_lock<10:
+            spam_lock=time.time()
+            return
+        else:
+            while  ctx.voice_client:
+                while ctx.voice_client.is_playing() or ctx.voice_client.is_paused():
+                    await asyncio.sleep(1)
+                    if not ctx.voice_client:
+                        break
+                if ctx.voice_client:
+                    await ctx.voice_client.disconnect()
+                else:
+                    return
 
     @commands.Cog.listener()
     async def on_ready(self):
@@ -347,18 +352,18 @@ class Music(commands.Cog):
     @penis.before_invoke
     
     async def ensure_voice(self, ctx):
-    global spam_lock
-    if time.time()-spam_lock>=10:
-        spam_lock=time.time()
-        if ctx.voice_client is None:
-            if ctx.author.voice:
-                await ctx.author.voice.channel.connect()
-                self.voice_channel=ctx.author.voice.channel
-            else:
-                await ctx.send("You are not connected to a voice channel.")
-                raise commands.CommandError("Author not connected to a voice channel.")
-        elif ctx.voice_client.is_playing():
-            ctx.voice_client.stop()
+        global spam_lock
+        if time.time()-spam_lock>=10:
+            spam_lock=time.time()
+            if ctx.voice_client is None:
+                if ctx.author.voice:
+                    await ctx.author.voice.channel.connect()
+                    self.voice_channel=ctx.author.voice.channel
+                else:
+                    await ctx.send("You are not connected to a voice channel.")
+                    raise commands.CommandError("Author not connected to a voice channel.")
+            elif ctx.voice_client.is_playing():
+                ctx.voice_client.stop()
             
 def setup(bot):
     spam_lock=time.time()
