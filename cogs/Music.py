@@ -25,7 +25,8 @@ ffmpeg_options = {
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
 def play_file(ctx,file_path):
-    ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
+        ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
+        time.sleep(5)
     
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
@@ -67,7 +68,7 @@ class Music(commands.Cog):
     async def play(self, ctx, url):
         """Plays music from a YouTube url"""
         url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=False)
+        player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=True)
         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
 
     @commands.command(aliases=['p'])
@@ -93,8 +94,9 @@ class Music(commands.Cog):
             await ctx.voice_client.disconnect()
         else:
             return
-        
+
 ################################################################
+
     @commands.command()
     async def alert(self,ctx):
         play_file(ctx,'./cogs/sounds/alert.mp3')
@@ -196,6 +198,16 @@ class Music(commands.Cog):
         await self.player(ctx)
             
     @commands.command()
+    async def pain(self,ctx):
+        play_file(ctx,'./cogs/sounds/pain.mp3')
+        await self.player(ctx)
+            
+    @commands.command()
+    async def peepee(self,ctx):
+        play_file(ctx,'./cogs/sounds/peepee.mp3')
+        await self.player(ctx)
+            
+    @commands.command()
     async def over9000(self,ctx):
         play_file(ctx,'./cogs/sounds/over9000.mp3')
         await self.player(ctx)
@@ -238,6 +250,11 @@ class Music(commands.Cog):
     @commands.command()
     async def svu(self,ctx):
         play_file(ctx,'./cogs/sounds/svu.mp3')
+        await self.player(ctx)
+            
+    @commands.command()
+    async def tralala(self,ctx):
+        play_file(ctx,'./cogs/sounds/tralala.mp3')
         await self.player(ctx)
         
     @commands.command()
@@ -288,7 +305,7 @@ class Music(commands.Cog):
                         await ctx.send("General Kenobi")
         if len(s)==0:
             await ctx.send('Hello **{}**!!'.format(ctx.author.name))
-			
+            
     @again.before_invoke
     @alert.before_invoke
     @bill.before_invoke
@@ -310,6 +327,8 @@ class Music(commands.Cog):
     @mission.before_invoke
     @nope.before_invoke
     @over9000.before_invoke
+    @pain.before_invoke
+    @peepee.before_invoke
     @ph.before_invoke
     @scat.before_invoke
     @shia.before_invoke
@@ -317,10 +336,12 @@ class Music(commands.Cog):
     @skinny.before_invoke
     @suit.before_invoke
     @svu.before_invoke
+    @tralala.before_invoke
     @trombone.before_invoke
     @violin.before_invoke
     @wilhelm.before_invoke
     @yakuza.before_invoke
+    
     @dallas.before_invoke
     @penis.before_invoke
     
