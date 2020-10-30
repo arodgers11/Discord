@@ -33,6 +33,7 @@ def play_file(ctx,file_path):
     if time.time()-spam_lock<10:
         spam_lock=time.time()
         await ctx.send("FOR FUCK'S SAKE STOP SPAMMING COMMANDS!!")
+        await ctx.send(":face_with_symbols_over_mouth:")
     else:
         spam_lock=time.time()
         ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
