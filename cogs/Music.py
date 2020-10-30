@@ -24,8 +24,6 @@ ffmpeg_options = {
 
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
-spam_lock=time.time()
-
 def play_file(ctx,file_path):
     if time.time()-spam_lock>=10:
         spam_lock=time.time()
@@ -360,4 +358,5 @@ class Music(commands.Cog):
             ctx.voice_client.stop()
             
 def setup(bot):
+    spam_lock=time.time()
     bot.add_cog(Music(bot))
