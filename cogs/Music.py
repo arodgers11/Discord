@@ -27,9 +27,9 @@ ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 spam_lock=time.time()
 
 def play_file(ctx,file_path):
-        t=time.time()
-        if t-spam_lock>=10:
-            ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
+    if time.time()-spam_lock>=10:
+        spam_lock=time.time()
+        ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
     
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
