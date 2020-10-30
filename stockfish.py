@@ -21,9 +21,9 @@ async def clear(ctx,amount=20):
 async def on_voice_state_update(member, before, after):
     if after.channel is not None and not member.bot:
         if not before.self_deaf and not before.self_mute and not after.self_deaf and not after.self_mute:
-            if after.channel.name in ['Lt. Deen\'s Alpha Squad','OW Bravo Squad','The War Room']:
+            if after.channel.name in ['The Chamber']:
                 await asyncio.sleep(1)
-                if not client.voice_clients and cogs.f'./cogs/sounds/walk-on/{member.display_name}.mp3':
+                if not client.voice_clients:
                     vc = await after.channel.connect()
                 else:
                     vc = client.voice_clients[0]
