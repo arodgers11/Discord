@@ -34,6 +34,7 @@ async def play_file(ctx,file_path):
         spam_lock=time.time()
         await ctx.send("FOR FUCK'S SAKE STOP SPAMMING COMMANDS!!")
         await ctx.send(":face_with_symbols_over_mouth:")
+        return
     else:
         spam_lock=time.time()
         ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
@@ -362,8 +363,10 @@ class Music(commands.Cog):
     
     async def ensure_voice(self, ctx):
         global spam_lock
-        if time.time()-spam_lock>=10:
+        if time.time()-spam_lock<10:
             spam_lock=time.time()
+            return
+        else:
             if ctx.voice_client is None:
                 if ctx.author.voice:
                     await ctx.author.voice.channel.connect()
