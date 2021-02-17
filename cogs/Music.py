@@ -4,12 +4,10 @@ import youtube_dl
 import asyncio
 import time
 
-spam_lock=time.time()
-
 ytdl_format_options = {
     'format': 'bestaudio/best',
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
-    'restrictfilenames': False,
+    'restrictfilenames': True,
     'noplaylist': True,
     'nocheckcertificate': True,
     'ignoreerrors': False,
@@ -26,19 +24,17 @@ ffmpeg_options = {
 
 ytdl = youtube_dl.YoutubeDL(ytdl_format_options)
 
-spam_lock=time.time()
-
 async def play_file(ctx,file_path):
-    global spam_lock
+    spam_lock=time.time()-11
+    print(spam_lock)
+    print(time.time())
     if time.time()-spam_lock<10:
         spam_lock=time.time()
-        await ctx.send("FOR FUCK'S SAKE STOP SPAMMING COMMANDS!!")
+        await ctx.send("FOR FUCKS SAKE STOP SPAMMING COMMANDS!!")
         await ctx.send(":face_with_symbols_over_mouth:")
-        return
     else:
-        spam_lock=time.time()
         ctx.voice_client.play(discord.FFmpegPCMAudio(source=file_path))
-
+    
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
         super().__init__(source, volume)
@@ -80,39 +76,36 @@ class Music(commands.Cog):
     async def on_ready(self):
         print('Music Loaded')
 
-    # @commands.command()
-    # async def play(self, ctx, url):
-        # """Plays music from a YouTube url"""
-        # url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
-        # player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=True)
-        # ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+    @commands.command()
+    async def play(self, ctx, url):
+        """Plays music from a YouTube url"""
+        url='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+        player = await YTDLSource.from_url(url,loop=self.bot.loop,stream=True)
+        ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
 
-    # @commands.command(aliases=['p'])
-    # async def pause(self,ctx):
-        # paused = ctx.voice_client.is_paused()
-        # if not paused:
-            # ctx.voice_client.pause()
-        # else:
-            # return
+    @commands.command(aliases=['p'])
+    async def pause(self,ctx):
+        paused = ctx.voice_client.is_paused()
+        if not paused:
+            ctx.voice_client.pause()
+        else:
+            return
 
-    # @commands.command(aliases=['r'])
-    # async def resume(self,ctx):
-        # paused = ctx.voice_client.is_paused()
-        # if paused:
-            # ctx.voice_client.resume()
-        # else:
-            # return
+    @commands.command(aliases=['r'])
+    async def resume(self,ctx):
+        paused = ctx.voice_client.is_paused()
+        if paused:
+            ctx.voice_client.resume()
+        else:
+            return
 
     @commands.command(aliases=['stop','stfu'])
     async def leave(self, ctx):
         """Stops music and disconnects the bot from voice"""
-        if ctx.voice_client:
-            await ctx.voice_client.disconnect()
-        else:
-            return
-
+        spam_lock=0
+        await ctx.voice_client.disconnect()
+        
 ################################################################
-
     @commands.command()
     async def alert(self,ctx):
         await play_file(ctx,'./cogs/sounds/alert.mp3')
@@ -164,11 +157,6 @@ class Music(commands.Cog):
         await self.player(ctx)
                 
     @commands.command()
-    async def damn(self,ctx):
-        await play_file(ctx,'./cogs/sounds/damn.mp3')
-        await self.player(ctx)
-                
-    @commands.command()
     async def disbelief(self,ctx):
         await play_file(ctx,'./cogs/sounds/disbelief.mp3')
         await self.player(ctx)
@@ -214,28 +202,18 @@ class Music(commands.Cog):
         await self.player(ctx)
             
     @commands.command()
-    async def pain(self,ctx):
-        await play_file(ctx,'./cogs/sounds/pain.mp3')
-        await self.player(ctx)
-            
-    @commands.command()
-    async def peepee(self,ctx):
-        await play_file(ctx,'./cogs/sounds/peepee.mp3')
-        await self.player(ctx)
-            
-    @commands.command()
     async def over9000(self,ctx):
         await play_file(ctx,'./cogs/sounds/over9000.mp3')
         await self.player(ctx)
-        
+
+    @commands.command()
+    async def pain(self,ctx):
+        await play_file(ctx,'./cogs/sounds/pain.mp3')
+        await self.player(ctx)
+
     @commands.command()
     async def ph(self,ctx):
         await play_file(ctx,'./cogs/sounds/ph.mp3')
-        await self.player(ctx)
-        
-    @commands.command()
-    async def peepee(self,ctx):
-        await play_file(ctx,'./cogs/sounds/peepee.mp3')
         await self.player(ctx)
             
     @commands.command()
@@ -321,7 +299,7 @@ class Music(commands.Cog):
                         await ctx.send("General Kenobi")
         if len(s)==0:
             await ctx.send('Hello **{}**!!'.format(ctx.author.name))
-            
+			
     @again.before_invoke
     @alert.before_invoke
     @bill.before_invoke
@@ -332,7 +310,6 @@ class Music(commands.Cog):
     @cena.before_invoke
     @crickets.before_invoke
     @damage.before_invoke
-    @damn.before_invoke
     @disbelief.before_invoke
     @dreams.before_invoke
     @horns.before_invoke
@@ -344,7 +321,6 @@ class Music(commands.Cog):
     @nope.before_invoke
     @over9000.before_invoke
     @pain.before_invoke
-    @peepee.before_invoke
     @ph.before_invoke
     @scat.before_invoke
     @shia.before_invoke
@@ -354,19 +330,16 @@ class Music(commands.Cog):
     @svu.before_invoke
     @tralala.before_invoke
     @trombone.before_invoke
-    @violin.before_invoke
     @wilhelm.before_invoke
     @yakuza.before_invoke
-    
     @dallas.before_invoke
     @penis.before_invoke
     
     async def ensure_voice(self, ctx):
         global spam_lock
-        if time.time()-spam_lock<10:
+        spam_lock=time.time()-11
+        if time.time()-spam_lock>=10:
             spam_lock=time.time()
-            return
-        else:
             if ctx.voice_client is None:
                 if ctx.author.voice:
                     await ctx.author.voice.channel.connect()
