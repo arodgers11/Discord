@@ -19,7 +19,7 @@ async def clear(ctx,amount=20):
 
 client.load_extension('cogs.Music')
 client.load_extension('cogs.OWL_wiki')
-clinet.load_extension('cogs.stalker')
+client.load_extension('cogs.stalker')
 
 @client.event
 async def on_ready():
