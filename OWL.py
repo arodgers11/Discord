@@ -54,7 +54,6 @@ def player_hero_stats_per_10(player,hero,map_name,year,stage):
 
     for i in stat_names:
         stat_sum[np.where(stat_names==i)[0][0]]=round((stats.query("stat_name == '{}'".format(i))['stat_amount'].sum()*600/time_played),2)
-    print(time_played)
     return stat_sum,stats,stat_names
 	
 [s,stats,names]=player_hero_stats_per_10('decay','Tracer','all',2020,1)
