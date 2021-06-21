@@ -18,7 +18,7 @@ async def clear(ctx,amount=20):
     await ctx.channel.purge(limit=amount)
 
 client.load_extension('cogs.Music')
-client.load_extension('cogs.OWL_wiki')
+#client.load_extension('cogs.OWL_wiki')
 client.load_extension('cogs.stalker')
 
 @client.event
