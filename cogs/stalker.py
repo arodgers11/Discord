@@ -19,7 +19,7 @@ class stalker(commands.Cog):
     async def off(self,ctx):
         for user in ctx.guild.members:
             #print(user.status)
-            print(user.status)
+            print(user.name, " ",user.id)
 
 def setup(bot):
     bot.add_cog(stalker(bot))
