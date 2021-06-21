@@ -12,8 +12,6 @@ TOKEN=os.environ['BOT_TOKEN']
 async def on_ready():
     print('READY')
 
-client=commands.Bot(command_prefix='.')
-
 @client.command(aliases=['c'])
 async def clear(ctx,amount=20):
     await ctx.channel.purge(limit=amount)
