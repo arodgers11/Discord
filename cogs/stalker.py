@@ -16,7 +16,7 @@ class stalker(commands.Cog):
 
     @commands.command()
     async def off(self,ctx):
-        for user in ctx.guild.members:
+        for user in ctx.guildf.etch_members(limit=None):
             #print(user.status)
             print(user.name, " ",user.id)
 
