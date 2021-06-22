@@ -11,7 +11,7 @@ class stalker(commands.Cog):
 
 @client.event
 async def on_member_update(before, after):
-    if before.name='arodgers':
+    if before.name='andyarchy':
         if before.status != after.status:
             if after.status="offline":
                 client.users.fetch('215957034820960256', false).then((user) => {
