@@ -14,7 +14,7 @@ class stalker(commands.Cog):
         #async for user in ctx.guild.fetch_members(limit=None):
         for user in ctx.guild.members:
             #print(user.status)
-            if user.status = discord.Status.offline:
+            if user.status == discord.Status.offline:
                 print(user.name, " ",user.id)
 
 def setup(bot):
