@@ -9,17 +9,21 @@ class stalker(commands.Cog):
     async def on_ready(self):
         print('Stalker Loaded')
 
-#@client.event
-#async def on_member_update(before, after):
-    #if before.id=""
-        #if before.status != after.status:  # to only run on status
-
+@client.event
+async def on_member_update(before, after):
+    if before.name='arodgers':
+        if before.status != after.status:
+            if after.status="offline":
+                client.users.fetch('215957034820960256', false).then((user) => {
+ user.send('andyarchy is online);
+});
+                
     @commands.command()
-    async def off(self,ctx):
+    async def offline_users(self,ctx):
         #async for user in ctx.guild.fetch_members(limit=None):
         for user in ctx.guild.members:
             #print(user.status)
-            if user.status != discord.Status.offline:
+            if user.status = discord.Status.offline:
                 print(user.name, " ",user.id)
 
 def setup(bot):
