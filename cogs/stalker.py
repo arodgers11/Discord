@@ -8,15 +8,6 @@ class stalker(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Stalker Loaded')
-
-@client.event
-async def on_member_update(before, after):
-    if before.name=='andyarchy': # or before.name=='arodgers':
-        if before.status != after.status:
-            if after.status=="offline":
-                client.users.fetch('215957034820960256', false).then((user) => {
- user.send('andyarchy is online);
-});
                 
     @commands.command()
     async def offline_users(self,ctx):
